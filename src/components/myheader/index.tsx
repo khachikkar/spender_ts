@@ -34,7 +34,7 @@ const Myheader = () =>{
                 data && isAuth ? <span> {data.name} {data.lastname }</span> : <></>
             }
             {
-                isAuth ? <h4>Balance: {data?.balance}</h4> : <></>
+                isAuth ? <h4>Balance: 0</h4> : <></>
             }
             {
 

@@ -5,6 +5,9 @@ import {createUserWithEmailAndPassword} from "firebase/auth"
 import {auth, db} from "../../../services/firebase/firebase.ts";
 import {doc, setDoc} from "firebase/firestore"
 import {FIRESTORE_PATH_NAMES, ROUTE_PATH_NAMES} from "../../../utils/constants/constants.ts";
+import "./index.css"
+
+
 
 const Register = () =>{
 
@@ -29,7 +32,7 @@ const handleRegister = async ( values : Values ) =>{
             const createDoc = doc(db, FIRESTORE_PATH_NAMES.USERS, uid)
         const data = {}
         await setDoc(createDoc, {
-            uid, name, lastname, email, data, balance: 0
+            uid, name, lastname, email, data
         })
         notification.success({
             message: "created successfully"
@@ -47,7 +50,7 @@ const handleRegister = async ( values : Values ) =>{
 const [form] = Form.useForm()
 
     return (
-        <div>
+        <div className="register">
             <h2>Register</h2>
             <Form layout="vertical" form={form} onFinish={handleRegister}>
 
