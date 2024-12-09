@@ -7,6 +7,7 @@ import {signOut} from "firebase/auth"
 import {auth} from "../../services/firebase/firebase.ts";
 import {useDispatch} from "react-redux";
 import {AppDispatch} from "../../state-management/store/store.ts";
+import {Link} from "react-router-dom";
 
 
 const Myheader = () =>{
@@ -33,8 +34,9 @@ const Myheader = () =>{
             }
 
             {
-                isAuth ?  <Button onClick={handleLogout}>Log Out</Button> : <></>
+                isAuth ?  <Button onClick={handleLogout}>Log Out</Button> : <Link to="/login"> <Button >Log In</Button></Link>
             }
+
         </div>
     )
 }

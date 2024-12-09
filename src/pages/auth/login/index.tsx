@@ -9,6 +9,7 @@ import {useDispatch} from "react-redux";
 // import {Store} from "../../cabinet";
 import {fetchUserProfileInfo} from "../../../state-management/slices/userProfile";
 import {AppDispatch} from "../../../state-management/store/store.ts";
+import "./index.css"
 
 
 
@@ -44,7 +45,8 @@ setLoading(false)
 const [form] = Form.useForm()
 
     return (
-        <div>
+        <div className="login">
+            <h2>Log In</h2>
             <Form layout="vertical" form={form} onFinish={handleLogin}>
 
                 <Form.Item

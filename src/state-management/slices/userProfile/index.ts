@@ -28,7 +28,7 @@ type UserData = {
     lastname: string
     email: string
     uid: string
-    data: object
+    data: object // todo
 }
 
 

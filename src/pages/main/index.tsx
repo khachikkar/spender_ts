@@ -1,11 +1,13 @@
 import {Outlet} from "react-router-dom";
 import Myheader from "../../components/myheader";
-
+import "./index.css"
 const Main = ()=>{
     return(
-        <div>
+        <div className="maine">
             <Myheader/>
-            <Outlet />
+           <div className="mout">
+               <Outlet/>
+           </div>
         </div>
     )
 }
