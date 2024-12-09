@@ -1,0 +1,8 @@
+// add a event modules
+// add a  form to do (5 events) and Income
+
+// add a form
+
+// add a money transfer slice and config it
+
+// add a  history
