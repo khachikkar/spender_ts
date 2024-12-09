@@ -28,14 +28,19 @@ const Myheader = () =>{
 
     return (
         <div className="mheader">
-            <h1>Spender</h1>
+            <h2>Spender</h2>
+
             {
                 data && isAuth ? <span> {data.name} {data.lastname }</span> : <></>
             }
-
             {
+                isAuth ? <h4>Balance: {data?.balance}</h4> : <></>
+            }
+            {
+
                 isAuth ?  <Button onClick={handleLogout}>Log Out</Button> : <Link to="/login"> <Button >Log In</Button></Link>
             }
+
 
         </div>
     )

@@ -29,7 +29,7 @@ const handleRegister = async ( values : Values ) =>{
             const createDoc = doc(db, FIRESTORE_PATH_NAMES.USERS, uid)
         const data = {}
         await setDoc(createDoc, {
-            uid, name, lastname, email, data
+            uid, name, lastname, email, data, balance: 0
         })
         notification.success({
             message: "created successfully"

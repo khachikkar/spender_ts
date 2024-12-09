@@ -29,6 +29,7 @@ type UserData = {
     lastname: string
     email: string
     uid: string
+    balance: number
     data: object // todo
 }
 
