@@ -2,6 +2,7 @@ import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
 import { onAuthStateChanged } from "firebase/auth";
 import {auth, db} from "../../../services/firebase/firebase.ts";
 import {doc, getDoc} from "firebase/firestore";
+import {FIRESTORE_PATH_NAMES} from "../../../utils/constants/constants.ts";
 
 
 
@@ -39,7 +40,7 @@ export const fetchUserProfileInfo = createAsyncThunk<UserData |null, void>("data
         onAuthStateChanged(auth, (user)=>{
             if(user){
                 const {uid} = user
-                const userRef = doc(db, "users", uid)
+                const userRef = doc(db, FIRESTORE_PATH_NAMES.USERS, uid)
                 getDoc(userRef)
                     .then((data)=>{
                         if(data.exists()){

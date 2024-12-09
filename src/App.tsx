@@ -9,6 +9,7 @@ import {useDispatch} from "react-redux";
 import {useEffect} from "react";
 import {fetchUserProfileInfo} from "./state-management/slices/userProfile";
 import {AppDispatch} from "./state-management/store/store.ts";
+import {ROUTE_PATH_NAMES} from "./utils/constants/constants.ts";
 
 
 
@@ -28,10 +29,10 @@ function App() {
           <RouterProvider router={
               createBrowserRouter(
                   createRoutesFromElements(
-                      <Route path="/" element={<Main />}>
-                        <Route path="/login" element={ isAuth ?  <Cabinet /> : <Login/>} />
-                        <Route path="/register" element={isAuth ?  <Cabinet /> : <Register /> } />
-                        <Route path="/cabinet" element={isAuth ? <Cabinet /> : <Login/> }/>
+                      <Route path={ROUTE_PATH_NAMES.MAIN} element={<Main />}>
+                        <Route path={ROUTE_PATH_NAMES.LOGIN} element={ isAuth ?  <Cabinet /> : <Login/>} />
+                        <Route path={ROUTE_PATH_NAMES.REGISTER} element={isAuth ?  <Cabinet /> : <Register /> } />
+                        <Route path={ROUTE_PATH_NAMES.CABINET} element={isAuth ? <Cabinet /> : <Login/> }/>
                       </Route>
                   )
               )

@@ -10,6 +10,7 @@ import {useDispatch} from "react-redux";
 import {fetchUserProfileInfo} from "../../../state-management/slices/userProfile";
 import {AppDispatch} from "../../../state-management/store/store.ts";
 import "./index.css"
+import {ROUTE_PATH_NAMES} from "../../../utils/constants/constants.ts";
 
 
 
@@ -30,7 +31,7 @@ const handleLogin = async(values: LoginValues) =>{
         await signInWithEmailAndPassword(auth, email, password)
         dispatch(fetchUserProfileInfo())
         form.resetFields()
-        navigate("/cabinet")
+        navigate(ROUTE_PATH_NAMES.CABINET)
     }catch (e){
         console.log(e)
     }finally {

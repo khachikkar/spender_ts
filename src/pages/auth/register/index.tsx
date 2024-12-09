@@ -4,6 +4,7 @@ import {useState} from "react";
 import {createUserWithEmailAndPassword} from "firebase/auth"
 import {auth, db} from "../../../services/firebase/firebase.ts";
 import {doc, setDoc} from "firebase/firestore"
+import {FIRESTORE_PATH_NAMES, ROUTE_PATH_NAMES} from "../../../utils/constants/constants.ts";
 
 const Register = () =>{
 
@@ -25,7 +26,7 @@ const handleRegister = async ( values : Values ) =>{
     try{
             const resp = await createUserWithEmailAndPassword(auth , email, password)
             const {uid} =resp.user
-            const createDoc = doc(db, "users", uid)
+            const createDoc = doc(db, FIRESTORE_PATH_NAMES.USERS, uid)
         const data = {}
         await setDoc(createDoc, {
             uid, name, lastname, email, data
@@ -34,7 +35,7 @@ const handleRegister = async ( values : Values ) =>{
             message: "created successfully"
         })
 
-        navigate("/login")
+        navigate(ROUTE_PATH_NAMES.LOGIN)
 
     }catch(e){
             console.log(e)
