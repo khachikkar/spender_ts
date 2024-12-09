@@ -3,6 +3,14 @@ import {Link, useNavigate} from "react-router-dom";
 import {signInWithEmailAndPassword} from "firebase/auth"
 import {auth} from "../../../services/firebase/firebase.ts";
 import {useState} from "react";
+import {useDispatch} from "react-redux";
+// import {useSelector} from "react-redux";
+// import {store} from "../../../state-management/store/store.ts";
+// import {Store} from "../../cabinet";
+import {fetchUserProfileInfo} from "../../../state-management/slices/userProfile";
+import {AppDispatch} from "../../../state-management/store/store.ts";
+
+
 
 const Login = () =>{
 const [loading, setLoading] = useState<boolean>(false)
@@ -11,13 +19,15 @@ type LoginValues = {
     email: string
     password: string
 }
-
+const dispatch = useDispatch<AppDispatch>()
+    // const {userInfo:{isAuth}} = useSelector((store: Store) =>store.userProfile)
 
 const handleLogin = async(values: LoginValues) =>{
     setLoading(true)
     try{
         const {email, password} = values
         await signInWithEmailAndPassword(auth, email, password)
+        dispatch(fetchUserProfileInfo())
         form.resetFields()
         navigate("/cabinet")
     }catch (e){
