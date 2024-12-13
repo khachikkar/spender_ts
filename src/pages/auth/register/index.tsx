@@ -30,7 +30,14 @@ const handleRegister = async ( values : Values ) =>{
             const resp = await createUserWithEmailAndPassword(auth , email, password)
             const {uid} =resp.user
             const createDoc = doc(db, FIRESTORE_PATH_NAMES.USERS, uid)
-        const data = {}
+        const data = {
+                income: 0,
+                other: {
+                    food: [],
+                    shop: [],
+                    car: []
+                }
+        }
         await setDoc(createDoc, {
             uid, name, lastname, email, data
         })

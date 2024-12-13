@@ -23,17 +23,6 @@ const initialState: UserProfileSlice = {
     },
     error: null
 }
-
-type UserData = {
-    name: string
-    lastname: string
-    email: string
-    uid: string
-    data: object // todo
-}
-
-
-
 export const fetchUserProfileInfo = createAsyncThunk<UserData |null, void>("data/userInfo", async()=>{
     return new Promise<UserData | null>((resolve, reject)=>{
         console.log("Starting fetchUserProfileInfo");
@@ -44,6 +33,7 @@ export const fetchUserProfileInfo = createAsyncThunk<UserData |null, void>("data
                 getDoc(userRef)
                     .then((data)=>{
                         if(data.exists()){
+                            // console.log(data.data().data, "dattaaaaa")
                             resolve(data.data() as UserData)
                             console.log(data, "dattaa")
                         }else{
@@ -56,6 +46,24 @@ export const fetchUserProfileInfo = createAsyncThunk<UserData |null, void>("data
         })
     })
 })
+export type UserData = {
+    name: string
+    lastname: string
+    email: string
+    uid: string
+    data: {
+        income: number,
+        other: {
+            car: [],
+            shop: [],
+            food: []
+        }
+    } // todo
+}
+
+
+
+
 
 
 
@@ -71,6 +79,8 @@ const userProfileSlice = createSlice({
             state.userInfo.isAuth = action.payload
         }
     },
+
+
     extraReducers: (promise)=>{
         promise
             .addCase(fetchUserProfileInfo.pending, (state)=>{

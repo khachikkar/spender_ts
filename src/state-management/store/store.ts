@@ -1,11 +1,13 @@
 import {configureStore} from "@reduxjs/toolkit";
 import userProfileReducer from "../slices/userProfile"
+// import financeData from "../slices/financeData";
 
 
 
 export const store = configureStore({
     reducer:{
-        userProfile: userProfileReducer
+        userProfile: userProfileReducer,
+        // financeData: financeData,
     }
 })
 
